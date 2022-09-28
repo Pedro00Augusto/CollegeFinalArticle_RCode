@@ -1,0 +1,135 @@
+library(readxl)
+library(plm)
+library(lmtest)
+library(did)
+library(texreg)
+library(dplyr)
+library(stargazer)
+painel <- read_excel("C:/Users/Admin/Desktop/UNB/8o Semestre/TCC/Database/1 - Tabela Geral.xlsx")
+painel$lie <- painel$lie / 1000
+
+#Modelos de Regressao
+aleat_eduefai_bin <- plm(eduefai ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "random", index = c("ano","estado"))
+fixo_eduefai_bin <- plm(eduefai ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "within", index = c("ano","estado"))
+aleat_eduefai_pct <- plm(eduefai ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "random", index = c("ano","estado"))
+fixo_eduefai_pct <- plm(eduefai ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "within", index = c("ano","estado"))
+lm_eduefai_bin <- lm(eduefai ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel)
+lm_eduefai_pct <- lm(eduefai ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel)
+
+aleat_eduefaf_bin <- plm(eduefaf ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "random", index = c("ano","estado"))
+fixo_eduefaf_bin <- plm(eduefaf ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "within", index = c("ano","estado"))
+aleat_eduefaf_pct <- plm(eduefaf ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "random", index = c("ano","estado"))
+fixo_eduefaf_pct <- plm(eduefaf ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "within", index = c("ano","estado"))
+lm_eduefaf_bin <- lm(eduefaf ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel)
+lm_eduefaf_pct <- lm(eduefaf ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel)
+
+aleat_eduem_bin <- plm(eduem ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "random", index = c("ano","estado"))
+fixo_eduem_bin <- plm(eduem ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "within", index = c("ano","estado"))
+aleat_eduem_pct <- plm(eduem ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "random", index = c("ano","estado"))
+fixo_eduem_pct <- plm(eduem ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel, model = "within", index = c("ano","estado"))
+lm_eduem_bin <- lm(eduem ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel)
+lm_eduem_pct <- lm(eduem ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt,data = painel)
+
+aleat_saude_bin <- plm(saude ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + cobvac + esgoto,data = painel, model = "random", index = c("ano","estado"))
+fixo_saude_bin <- plm(saude ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + cobvac + esgoto,data = painel, model = "within", index = c("ano","estado"))
+aleat_saude_pct <- plm(saude ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + cobvac + esgoto,data = painel, model = "random", index = c("ano","estado"))
+fixo_saude_pct <- plm(saude ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + cobvac + esgoto,data = painel, model = "within", index = c("ano","estado"))
+lm_saude_bin <- lm(saude ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + cobvac + esgoto,data = painel)
+lm_saude_pct <- lm(saude ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + cobvac + esgoto,data = painel)
+
+aleat_segur_bin <- plm(segur ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + desocup + anosestu,data = painel, model = "random", index = c("ano","estado"))
+fixo_segur_bin <- plm(segur ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + desocup + anosestu,data = painel, model = "within", index = c("ano","estado"))
+aleat_segur_pct <- plm(segur ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + desocup + anosestu,data = painel, model = "random", index = c("ano","estado"))
+fixo_segur_pct <- plm(segur ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + desocup + anosestu,data = painel, model = "within", index = c("ano","estado"))
+lm_segur_bin <- lm(segur ~ liebin + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + desocup + anosestu,data = painel)
+lm_segur_pct <- lm(segur ~ lie1 + lie5 + lie10 + d2004 + d2005 + d2006 + d2007 + d2008 + d2009 + d2010 + d2011 + d2012 + d2013 + d2014 + d2015 + d2016 + d2017 + d2018 + d2019 + pibcapta + gini + ivs + intesprt + desocup + anosestu,data = painel)
+
+#Testes de Diagnostico
+phtest(fixo_eduefai, aleat_eduefai)
+phtest(fixo_eduefaf, aleat_eduefaf)
+phtest(fixo_eduem, aleat_eduem)
+phtest(fixo_saude, aleat_saude)
+phtest(fixo_segur, aleat_segur)
+
+att_eduefaibin <- att_gt(yname = "eduefai", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduefai1 <- att_gt(yname = "eduefai", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio1", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduefai5 <- att_gt(yname = "eduefai", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio5", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduefai10 <- att_gt(yname = "eduefai", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio10", data = painel, panel = TRUE, control_group = "notyettreated")
+
+att_eduefafbin <- att_gt(yname = "eduefaf", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduefaf1 <- att_gt(yname = "eduefaf", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio1", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduefaf5 <- att_gt(yname = "eduefaf", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio5", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduefaf10 <- att_gt(yname = "eduefaf", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio10", data = painel, panel = TRUE, control_group = "notyettreated")
+
+att_eduembin <- att_gt(yname = "eduem", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduem1 <- att_gt(yname = "eduem", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio1", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduem5 <- att_gt(yname = "eduem", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio5", data = painel, panel = TRUE, control_group = "notyettreated")
+att_eduem10 <- att_gt(yname = "eduem", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio10", data = painel, panel = TRUE, control_group = "notyettreated")
+
+att_saudebin <- att_gt(yname = "saude", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio", data = painel, panel = TRUE, control_group = "notyettreated")
+att_saude1 <- att_gt(yname = "saude", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio1", data = painel, panel = TRUE, control_group = "notyettreated")
+att_saude5 <- att_gt(yname = "saude", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio5", data = painel, panel = TRUE, control_group = "notyettreated")
+att_saude10 <- att_gt(yname = "saude", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio10", data = painel, panel = TRUE, control_group = "notyettreated")
+
+att_segurbin <- att_gt(yname = "segur", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio", data = painel, panel = TRUE, control_group = "notyettreated")
+att_segur1 <- att_gt(yname = "segur", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio1", data = painel, panel = TRUE, control_group = "notyettreated")
+att_segur5 <- att_gt(yname = "segur", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio5", data = painel, panel = TRUE, control_group = "notyettreated")
+att_segur10 <- att_gt(yname = "segur", tname = "ano", idname = "estadocod", xformla = NULL ,gname = "anoinicio10", data = painel, panel = TRUE, control_group = "notyettreated")
+
+eduefaibin_es <- aggte(att_eduefaibin, type = "group")
+eduefai1_es <- aggte(att_eduefai1, type = "group")
+eduefai5_es <- aggte(att_eduefai5, type = "group")
+eduefai10_es <- aggte(att_eduefai10, type = "group")
+
+eduefafbin_es <- aggte(att_eduefafbin, type = "group")
+eduefaf1_es <- aggte(att_eduefaf1, type = "group")
+eduefaf5_es <- aggte(att_eduefaf5, type = "group")
+eduefaf10_es <- aggte(att_eduefaf10, type = "group")
+
+eduembin_es <- aggte(att_eduembin, type = "group")
+eduem1_es <- aggte(att_eduem1, type = "group")
+eduem5_es <- aggte(att_eduem5, type = "group")
+eduem10_es <- aggte(att_eduem10, type = "group")
+
+saudebin_es <- aggte(att_saudebin, type = "group")
+saude1_es <- aggte(att_saude1, type = "group")
+saude5_es <- aggte(att_saude5, type = "group")
+saude10_es <- aggte(att_saude10, type = "group")
+
+segurbin_es <- aggte(att_segurbin, type = "group")
+segur1_es <- aggte(att_segur1, type = "group")
+segur5_es <- aggte(att_segur5, type = "group")
+segur10_es <- aggte(att_segur10, type = "group")
+
+graf_eduefaibin <- ggdid(eduefaibin_es, title = "Variável Binária", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduefai1 <- ggdid(eduefai1_es, title = "Variável > 1%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduefai5 <- ggdid(eduefai5_es, title = "Variável > 5%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduefai10 <- ggdid(eduefai10_es, title = "Variável > 10%", xlab = "Coeficiente", ylab = "Ano de Início")
+
+graf_eduefafbin <- ggdid(eduefafbin_es, title = "Variável Binária", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduefaf1 <- ggdid(eduefaf1_es, title = "Variável > 1%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduefaf5 <- ggdid(eduefaf5_es, title = "Variável > 5%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduefaf10 <- ggdid(eduefaf10_es, title = "Variável > 10%", xlab = "Coeficiente", ylab = "Ano de Início")
+ 
+graf_eduembin <- ggdid(eduembin_es, title = "Variável Binária", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduem1 <- ggdid(eduem1_es, title = "Variável > 1%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduem5 <- ggdid(eduem5_es, title = "Variável > 5%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_eduem10 <- ggdid(eduem10_es, title = "Variável > 10%", xlab = "Coeficiente", ylab = "Ano de Início")
+
+graf_saudebin <- ggdid(saudebin_es, title = "Variável Binária", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_saude1 <- ggdid(saude1_es, title = "Variável > 1%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_saude5 <- ggdid(saude5_es, title = "Variável > 5%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_saude10 <- ggdid(saude10_es, title = "Variável > 10%", xlab = "Coeficiente", ylab = "Ano de Início")
+ 
+graf_segurbin <- ggdid(segurbin_es, title = "Variável Binária", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_segur1 <- ggdid(segur1_es, title = "Variável > 1%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_segur5 <- ggdid(segur5_es, title = "Variável > 5%", xlab = "Coeficiente", ylab = "Ano de Início")
+graf_segur10 <- ggdid(segur10_es, title = "Variável > 10%", xlab = "Coeficiente", ylab = "Ano de Início")
+
+tabelas_eduefai <- stargazer(fixo_eduefai_bin, lm_eduefai_bin, fixo_eduefai_pct, lm_eduefai_pct, type = "text", column.labels = c("Painel - Binário", "MQO - Binário", "Painel - Tratado", "MQO - Tratado"), model.names = FALSE, model.numbers = FALSE, align = TRUE)
+tabelas_eduefaf <- stargazer(fixo_eduefaf_bin, lm_eduefaf_bin, fixo_eduefaf_pct, lm_eduefaf_pct, type = "text", column.labels = c("Painel - Binário", "MQO - Binário", "Painel - Tratado", "MQO - Tratado"), model.names = FALSE, model.numbers = FALSE, align = TRUE)
+tabelas_eduem <- stargazer(fixo_eduem_bin, lm_eduem_bin, fixo_eduem_pct, lm_eduem_pct, type = "text", column.labels = c("Painel - Binário", "MQO - Binário", "Painel - Tratado", "MQO - Tratado"), model.names = FALSE, model.numbers = FALSE, align = TRUE)
+tabelas_saude <- stargazer(fixo_saude_bin, lm_saude_bin, fixo_saude_pct, lm_saude_pct, type = "text", column.labels = c("Painel - Binário", "MQO - Binário", "Painel - Tratado", "MQO - Tratado"), model.names = FALSE, model.numbers = FALSE, align = TRUE)
+tabelas_segur <- stargazer(fixo_segur_bin, lm_segur_bin, fixo_segur_pct, lm_segur_pct, type = "text", column.labels = c("Painel - Binário", "MQO - Binário", "Painel - Tratado", "MQO - Tratado"), model.names = FALSE, model.numbers = FALSE, align = TRUE)
+
+teste <- painel %>% group_by(estado) %>% summarise(minAI = min(eduefai),médiaAI = mean(eduefai), maxAI = max(eduefai), minAF = min(eduefaf),médiaAF = mean(eduefaf), maxAF = max(eduefaf), minEM = min(eduem),médiaEM = mean(eduem), maxEM = max(eduem))
